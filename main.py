@@ -26,8 +26,7 @@ if __name__ == "__main__":
         "api_field_list": visit_field_list,
         "google_sheet_url": os.getenv("VISIT_SHEET_URL")
     }]
-    gc = service_account()
-
+    gc = gspread.service_account(filename='metrics-to-sheets-495710-de63a2d35399.json')
     for data_elem in data_list:
         data = get_log_data(api_host_url,
                             counter_id,
