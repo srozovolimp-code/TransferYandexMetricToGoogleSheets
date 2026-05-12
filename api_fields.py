@@ -5,6 +5,7 @@ hit_field_list = [
     "ym:pv:deviceCategory",
     "ym:pv:operatingSystemRoot",
     "ym:pv:clientID",
+    "ym:s:counterUserIDHash",
     "ym:pv:browser",
     "ym:pv:lastTrafficSource",
     "ym:pv:goalsID",
