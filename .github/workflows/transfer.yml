@@ -7,7 +7,6 @@ on:
 
 env:
   COUNTER_ID: ${{secrets.COUNTER_ID}}
-  GOOGLE_SERVICE_ACCOUNT: ${{secrets.GOOGLE_SHEETS_CREDENTIALS}}
   HIT_SHEET_URL: ${{secrets.HIT_SHEET_URL}}
   START_DATE: ${{secrets.START_DATE}}
   TOKEN: ${{secrets.TOKEN}}
@@ -20,9 +19,12 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Save Google creds
+      shell: bash
       run: |
-        mkdir -p ~/.config/gspread
-        printf '%s' "${{env.GOOGLE_SERVICE_ACCOUNT}}" > ~/.config/gspread/service_account.json
+            mkdir -p ~/.config/gspread
+            cat <<EOF > ~/.config/gspread/service_account.json
+            ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+            EOF
 
     - name: Set up Python
       uses: actions/setup-python@v4
