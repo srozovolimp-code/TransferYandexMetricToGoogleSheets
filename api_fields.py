@@ -9,7 +9,8 @@ hit_field_list = [
     "ym:pv:lastTrafficSource",
     "ym:pv:goalsID",
     "ym:pv:parsedParamsKey1",
-    "ym:pv:parsedParamsKey2"
+    "ym:pv:parsedParamsKey2",
+    "ym:pv:parsedParamsValueString"
 ]
 
 visit_field_list = [
@@ -21,7 +22,6 @@ visit_field_list = [
     "ym:s:deviceCategory",
     "ym:s:operatingSystemRoot",
     "ym:s:userID",
-    "ym:s:clientID",
     "ym:s:browser",
     "ym:s:browserEngine",
     "ym:s:screenOrientation",
