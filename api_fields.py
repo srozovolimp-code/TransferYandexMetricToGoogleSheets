@@ -4,7 +4,6 @@ hit_field_list = [
     "ym:pv:URL",
     "ym:pv:deviceCategory",
     "ym:pv:operatingSystemRoot",
-    "ym:pv:userID",
     "ym:pv:clientID",
     "ym:pv:browser",
     "ym:pv:lastTrafficSource",
