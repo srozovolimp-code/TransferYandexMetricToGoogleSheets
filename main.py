@@ -43,13 +43,17 @@ if __name__ == "__main__":
             data_elem["api_field_list"],
         )
 
-        # Google Sheets ломает длинные clientID, если воспринимает их как числа.
-        # Поэтому сохраняем clientID как текст.
         for col in ["ym:s:clientID", "ym:pv:clientID"]:
             if col in data.columns:
-                data[col] = "'" + data[col].fillna("").astype(str)
+                data[col] = data[col].fillna("").astype(str)
 
         sh = gc.open_by_url(data_elem["google_sheet_url"])
+
+        sh.sheet1.format("A:Z", {
+            "numberFormat": {
+                "type": "TEXT"
+            }
+        })
 
         sh.sheet1.update(
             [data.columns.values.tolist()]
