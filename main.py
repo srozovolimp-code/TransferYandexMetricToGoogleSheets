@@ -22,11 +22,13 @@ if __name__ == "__main__":
             "source": "hits",
             "api_field_list": hit_field_list,
             "google_sheet_url": os.getenv("HIT_SHEET_URL"),
+            "worksheet_name": None,
         },
         {
             "source": "visits",
             "api_field_list": visit_field_list,
             "google_sheet_url": os.getenv("VISIT_SHEET_URL"),
+            "worksheet_name": "Сырые данные из Метрики v2",
         },
     ]
 
@@ -49,13 +51,18 @@ if __name__ == "__main__":
 
         sh = gc.open_by_url(data_elem["google_sheet_url"])
 
-        sh.sheet1.format("A:Z", {
+        if data_elem["worksheet_name"]:
+            worksheet = sh.worksheet(data_elem["worksheet_name"])
+        else:
+            worksheet = sh.sheet1
+
+        worksheet.format("A:Z", {
             "numberFormat": {
                 "type": "TEXT"
             }
         })
 
-        sh.sheet1.update(
+        worksheet.update(
             [data.columns.values.tolist()]
             + data.fillna("Unknown").values.tolist()
         )
