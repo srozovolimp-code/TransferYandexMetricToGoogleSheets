@@ -1,5 +1,4 @@
 hit_field_list = [
-    "ym:pv:bounce",
     "ym:pv:date",
     "ym:pv:dateTime",
     "ym:pv:URL",
